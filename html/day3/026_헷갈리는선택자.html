@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>헷갈리는 선택자</title>
+    <style>
+        /*얘는 hello world2를 선택한다.*/
+        .one.two {
+            color: blue;
+        }
+        /*얘는 hellow world3를 선택한다.*/
+        .one .two {
+            color: red;
+        }
+        /*둘은 헷갈리기 쉽다.*/
+    </style>
+</head>
+<body>
+   <div class="one">hello world1</div> 
+   <div class="one two">hello world2</div>
+   <div class="one">
+       <div class="two">hello world3</div>
+   </div>
+</body>
+</html>
