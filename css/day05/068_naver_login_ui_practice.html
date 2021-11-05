@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naver login UI practice</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        #login-ui {
+            padding: 15px;
+        }
+        a.button {
+            width: 330px;
+            height: 16px;
+            font-size: 16px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: center;
+            background-color: green;
+        }
+        .pw::before {
+            content: "·";
+        }
+    </style>
+</head>
+<body>
+    <article id="login-ui">
+        <header>
+            네이버를 더 안전하고 편리하게 이용하세요
+        </header>
+        <a class="button" href="">
+            <img src="./img/title.png" alt="">
+            로그인
+        </a>
+        <footer>
+            <p class="find">
+                <a class="id" href="">
+                    <img src="./img/lock.png" alt="">
+                    아이디
+                </a>
+                <a class="pw" href="">
+                    비밀번호찾기
+                </a>
+            </p>
+            <a class="join" href="">
+                <img src="./img/user.png" alt="">
+                회원가입
+            </a>
+        </footer>
+    </article>
+</body>
+</html>

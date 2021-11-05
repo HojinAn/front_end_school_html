@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float</title>
+    <style>
+        /* float 해제하는 여러가지 방법들 */
+        /* ul {
+            overflow: hidden;
+        } */
+        /* clear-fix */
+        .clear-fix::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        li {
+            height: 100px;
+            background: pink;
+        }
+        li:nth-child(3) {
+            width: 100%;
+            background-color: black;
+            float: left;
+        }
+        /*li:nth-child(3) {
+            clear: both;
+        }*/
+    </style>
+</head>
+<body>
+    <ul class="clear-fix">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
