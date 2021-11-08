@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex basis</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .container {
+            display: flex;
+        }
+        .item {
+            background: pink;
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+            flex: 1;
+            /*flex-basis: 100px;*/
+            /*flex-grow: 1;*/
+        }
+        .second {
+            /*flex-grow: 2;*/
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">Lorem, ipsum dolor.</div>
+        <div class="item second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, delectus consequatur corrupti at id natus illo? Fuga magnam repudiandae, quae quis excepturi dignissimos vero nostrum totam a similique blanditiis saepe! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis, necessitatibus illo dolore perferendis placeat expedita, omnis aliquid recusandae iure quo impedit laborum praesentium? Animi explicabo dignissimos nostrum veniam placeat magni? Lorem ipsum dolor sit amet.</div>
+        <div class="item">Lorem, ipsum dolor.</div>
+    </div>
+</body>
+</html>
