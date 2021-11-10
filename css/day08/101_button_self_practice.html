@@ -20,7 +20,7 @@
         }
         .btn::before {
             transform: translateY(50%) rotateX(-90deg);
-            content: "Click Me!!";
+            content: "";
             position: absolute;
             background-color: palevioletred;
             border-radius: 100%;
@@ -29,16 +29,15 @@
             width: 100%;
             height: 250%;
             transition: all .5s;
-            color: palevioletred;
         }
         
         .btn:hover::before{
-            padding: 3.5em 0 0 0;
             transform: translateY(50%) rotateX(0deg);
-            color: white;
+            z-index: -1;
         }
         .btn:hover {
             color: white;
+            z-index: 1;
         }
     </style>
 </head>
