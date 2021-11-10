@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class_5_quiz3</title>
+    <style>
+        .btnHam {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding-top: 100px;
+        }
+        .btnHam span {
+            /* span 공통사항 */
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin: 5px 0;
+            transition: all 1s;
+        }
+        .btnHam .a {
+            /* 첫번째 라인*/
+            background-color: red;
+        }
+        .btnHam .b {
+            /* 두번째 라인*/
+            background-color: green;
+        }
+        .btnHam .c {
+            /* 세번째 라인*/
+            background-color: blue;
+        }
+        .btnHam:hover .a {
+            transform: rotateZ(-45deg);
+        }
+        .btnHam:hover .b {
+            width: 0%;
+        }
+        .btnHam:hover .c {
+            transform: rotateZ(45deg);
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="btnHam">
+        <span class="a"></span>
+        <span class="b"></span>
+        <span class="c"></span>
+    </a>
+</body>
+</html>
