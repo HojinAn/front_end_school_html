@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1만 시간의 법칙</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        @charset "utf-8";
+        .blind{
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+        }
+
+
+        html{
+            background-color: #5B2386;
+            text-align: center;
+        }
+
+        #app{
+            padding:0 10px;
+        }
+        .tit-law{
+            position:relative;
+        }
+        .tit-law::after{
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin:-112px 0 0 -112px;
+            display: block;
+            content:'';
+            width:225px;
+            height:225px;
+            background-image: url(../images-law/title_bg.png);
+            background-size: 225px;
+            z-index:-1;
+        }
+        .tit-law .img-tit{
+            display:block;
+            margin:194px auto 0;
+            max-width:564px;
+            width:100%;
+        }
+        .img-txt{
+            display: block;
+            width:100%;
+            max-width: 486px;
+            margin:125px auto 78px;
+        }
+        .txt-desc{
+            position:relative;
+            max-width:373px;
+            font-size: 18px;
+            line-height: 24px;
+            margin:0 auto 102px;
+            color:#fff;
+        }
+        .txt-desc strong{
+            font-weight:700;
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        .txt-desc::before, .txt-desc::after{
+            position:absolute;
+            left:0;
+            top:13px;
+            display: block;
+            content:'';
+            width:42px;
+            height:35px;
+            background-image: url(../images-law/txt-left.png);
+            background-size: 42px 35px;
+        }
+        .txt-desc::after{
+            left:auto;
+            right:0;
+            background-image: url(../images-law/txt-right.png);
+        }
+        .txt-wannabe, .txt-time{
+            color:#fff;
+            font-size: 24px;
+            line-height: 24px;
+        }
+        .txt-wannabe{
+            margin-bottom:27px;
+        }
+        .txt-wannabe strong, .txt-time strong{
+            font-weight: bold;
+            font-size: 72px;
+            line-height: 72px;
+            vertical-align: -15px;
+        }
+        .txt-wannabe input, .txt-time input{
+            width: 228px;
+            height: 57px;
+            margin:0 17px;
+            border-radius: 7px;
+            border: none;
+            font-size: 24px;
+            text-align: center;
+        }
+        .btn-exc{
+            width:100%;
+            max-width: 565px;
+            height: 66px;
+            margin:115px 0 147px;
+            font-size: 24px;
+            line-height: 24px;
+            border-radius: 56px;
+            font-weight: bold;
+            background: #FCEE21;
+            color: #5B2386;
+            border: none;
+        }
+        .cont-footer{
+            margin:257px 0 70px 0;
+        }
+        .cont-footer .txt-footer{
+            font-size: 12px;
+            line-height: 17px;
+            color:#fff;
+        }
+        .img-footer{
+            display: block;
+            width:125px;
+            height:25px;
+            margin:0 auto 20px;
+        }
+
+        @media screen and (max-width:414px){
+            .txt-wannabe input, .txt-time input{
+                display: block;
+                margin: 10px auto;
+            }
+
+            .txt-wannabe strong, .txt-time strong{
+                display: block;
+                margin: 10px auto;
+            }
+
+            .btn-exc{
+                font-size:18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main id="app">
+        <h1 class="tit-law">
+            <img src="images-law/title.png" alt="1만 시간의 법칙" class="img-tit">
+        </h1>
+        <img src="images-law/txt_subtitle.png" alt="연습은 어제의 당신보다 당신을 더 낫게 만든다." class="img-txt">
+        <p class="txt-desc">
+            <strong>1만 시간의 법칙</strong>은<br>어떤분야의 전문가가 되기 위해서는<br> 최소한 1만 시간이 필요하다는 법칙이다.
+        </p>
+        <p class="txt-wannabe">
+            나는 <input type="text" placeholder="예)프로그래밍"> 전문가가 될것이다.
+        </p>
+        <p class="txt-time">
+            그래서 앞으로 매일 하루에 <input type="text" placeholder="예)5시간"> 시간씩 훈련할 것이다.
+        </p>
+        <button type="button" class="btn-exc">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
+        <section class="cont-result">
+            <h2 class="blind">결과 확인</h2>
+            <p class="txt-wannabe">
+                당신은 <strong>프로그래밍</strong> 전문가가 되기 위해서
+            </p>
+            <p class="txt-time">
+                대략 <strong>5110</strong> 일 이상 훈련하셔야 됩니다.
+            </p>
+        </section>
+        <footer class="cont-footer">
+            <img src="images-law/weniv.png" alt="weniv" class="img-footer">
+            <p class="txt-footer">본 서비스 내 이미지 및 컨텐츠의 저작권은 주식회사 WeNiv에 있습니다.</p>
+            <p class="txt-footer">
+                수정 및 재배포, 무단 도용시 법적인 문제가 발생할 수 있습니다.
+            </p>
+        </footer>
+    </main>
+    <!-- <script>
+
+        var myBtn = document.querySelector(".btn-exc");
+        var myWannabeResult = document.querySelector(".cont-result .txt-wannabe strong");
+        var myTimeResult = document.querySelector(".cont-result .txt-time strong");
+
+        myBtn.addEventListener('click', function () {
+            var myWannabe = document.querySelector(".txt-wannabe input").value;
+            var myTime = document.querySelector(".txt-time input").value;
+
+            myWannabeResult.innerText = myWannabe;
+            myTimeResult.innerText = Math.round(10000 / parseInt(myTime));
+
+        });
+
+    </script> -->
+</body>
+
+</html>
