@@ -1,0 +1,45 @@
+/* 직접 셀렉트 박스 만들기 */
+h2 {
+    margin: 30px;
+}
+
+.btn-select {
+    width: 200px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.list-member {
+    display: none;
+    width: 200px;
+    height: 30px;
+}
+
+.list-member.on {
+    display: block;
+}
+
+.btn-select.on+.list-member {
+    display: block;
+}
+
+.list-member li {
+    height: 30px;
+    width: 200px;
+}
+
+.list-member li button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.list-member li button:hover {
+    background-color: bisque;
+}
