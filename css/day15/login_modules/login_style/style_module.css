@@ -37,6 +37,7 @@
 
 .module-inp .inp-error{
     display: none;
+    cursor: pointer;
     margin:6px 0 0 4px;
     font-size: 14px;
     line-height: 18px;
