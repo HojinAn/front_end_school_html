@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clip 실습</title>
+    <style>
+        div {
+            position: absolute;
+            width: 500px;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip: rect(0 100px 60px 0);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://cdn.pixabay.com/photo/2020/11/04/13/29/cereal-5712343_960_720.jpg" alt="">
+    </div>
+</body>
+</html>
