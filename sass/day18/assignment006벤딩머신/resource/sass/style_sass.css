@@ -1,0 +1,45 @@
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0 28px;
+  padding-top: 247px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app .vending-machine {
+  width: 360px;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  padding: 31px 27px 28px;
+}
+
+.tit-app {
+  top: 0;
+  width: 100%;
+  max-width: 386px;
+  height: 180px;
+  background: no-repeat center/100% 100% url("../img/Logo_img.png");
+}
+
+#app .vending-machine .list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=style_sass.css.map */

@@ -1,0 +1,31 @@
+@mixin for-section {
+    width: 360px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+#app {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0 28px;
+    padding-top: 247px;
+    font-family: 'Noto Sans KR', sans-serif;
+    .vending-machine {
+        @include for-section;
+        position: relative;
+        padding: 31px 27px 28px;
+        @at-root .tit-app {
+            top: 0;
+            width: 100%;
+            max-width: 386px;
+            height: 180px;
+            background: no-repeat center / 100% 100% url("../img/Logo_img.png");
+        }
+        .list-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    }
+}
