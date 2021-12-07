@@ -37,11 +37,22 @@
         let femaleAverage = 0;
 
         function averageAge(data) {
-            let male = data.map(i => { if (i.gender == 'male') return i.age });
-            let female = data.map(i => { if (i.gender == 'female') return i.age });
+            let s = 0;
+            // let male = data.map(i => { if (i.gender == 'male') return i.age });
+            // let female = data.map(i => { if (i.gender == 'female') return i.age });
+            let male = data.filter(i => i.gender === 'male').map(i => i.age);
+            let female = data.filter(i => i.gender === 'female').map(i => i.age);
             console.log(male);
             console.log(female);
+            male.forEach(i => s += i);
+            maleAverage = (s / male.length);
 
+            s = 0;
+            female.forEach(i => s += i)
+            femaleAverage = (s / female.length);
+
+            console.log(maleAverage);
+            console.log(femaleAverage);
         }
         function sortTable(key) {
             if (click) {
@@ -58,7 +69,7 @@
             for (const iterator of data) {
                 //console.log(iterator);
                 tbodyData.push(`
-                    <td>
+                    <tr>
                         <td>${iterator.index}</td>
                         <td>${iterator.picture}</td>
                         <td>${iterator.age}</td>
