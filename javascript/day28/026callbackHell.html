@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS callback hell</title>
+</head>
+
+<body>
+    <script>
+        const userdb = [
+            {
+                "_id": "61b05e6505e828dedf2819e8",
+                "id": "Luella",
+                "pw": "25446c5c-c188-49e8-ab39-0995d0f6d1db",
+                "index": 0,
+                "picture": "http://placehold.it/32x32",
+                "age": 29,
+                "eyeColor": "green",
+                "name": "Ellis Merritt",
+                "gender": "male",
+                "company": "VIRXO",
+                "email": "ellismerritt@virxo.com",
+                "phone": "+1 (829) 527-2038",
+                "address": "467 Croton Loop, Hondah, Kentucky, 4246",
+                "grade": "골드"
+            },
+            {
+                "_id": "61b05e65553e8000eb053d87",
+                "id": "Nina",
+                "pw": "33ad58ae-2ffd-44de-9448-7ee3c517c578",
+                "index": 1,
+                "picture": "http://placehold.it/32x32",
+                "age": 34,
+                "eyeColor": "blue",
+                "name": "White Solomon",
+                "gender": "male",
+                "company": "NIPAZ",
+                "email": "whitesolomon@nipaz.com",
+                "phone": "+1 (832) 556-2181",
+                "address": "496 Regent Place, Torboy, Florida, 3812",
+                "grade": "골드"
+            },
+            {
+                "_id": "61b05e658c81692af701d636",
+                "id": "Benita",
+                "pw": "f2b7925f-5e81-44d8-9102-f77574c737fc",
+                "index": 2,
+                "picture": "http://placehold.it/32x32",
+                "age": 24,
+                "eyeColor": "green",
+                "name": "Marquita Mcfadden",
+                "gender": "female",
+                "company": "ZOMBOID",
+                "email": "marquitamcfadden@zomboid.com",
+                "phone": "+1 (814) 585-3612",
+                "address": "735 Livonia Avenue, Layhill, Vermont, 3465",
+                "grade": "관리자"
+            },
+            {
+                "_id": "61b05e65df3521f55e141dbf",
+                "id": "Dora",
+                "pw": "6419a502-6bc8-4ca8-90bc-d8a156f1c050",
+                "index": 3,
+                "picture": "http://placehold.it/32x32",
+                "age": 24,
+                "eyeColor": "blue",
+                "name": "England Green",
+                "gender": "male",
+                "company": "CENTREGY",
+                "email": "englandgreen@centregy.com",
+                "phone": "+1 (896) 463-2377",
+                "address": "517 Mill Road, Tilden, Palau, 468",
+                "grade": "골드"
+            },
+            {
+                "_id": "61b05e659f2ab88d56a79bdd",
+                "id": "Mandy",
+                "pw": "ff1e4f68-7680-48ec-8bdc-2f142d88aabb",
+                "index": 4,
+                "picture": "http://placehold.it/32x32",
+                "age": 36,
+                "eyeColor": "brown",
+                "name": "Dawson Yang",
+                "gender": "male",
+                "company": "COMFIRM",
+                "email": "dawsonyang@comfirm.com",
+                "phone": "+1 (895) 544-3644",
+                "address": "554 Cherry Street, Crown, Utah, 5489",
+                "grade": "일반"
+            },
+            {
+                "_id": "61b05e65c595a851eec36f4f",
+                "id": "Langley",
+                "pw": "5815e84f-fbf6-4353-9a09-b3fa9bd3d287",
+                "index": 5,
+                "picture": "http://placehold.it/32x32",
+                "age": 28,
+                "eyeColor": "brown",
+                "name": "Leonard Dickerson",
+                "gender": "male",
+                "company": "ACCUFARM",
+                "email": "leonarddickerson@accufarm.com",
+                "phone": "+1 (937) 511-3075",
+                "address": "747 Bainbridge Street, Odessa, Alabama, 7057",
+                "grade": "골드"
+            },
+            {
+                "_id": "61b05e654dbdfbf2260222a9",
+                "id": "Britt",
+                "pw": "fb2f5d55-3147-479d-a082-e07baf6150cf",
+                "index": 6,
+                "picture": "http://placehold.it/32x32",
+                "age": 40,
+                "eyeColor": "brown",
+                "name": "Penelope Colon",
+                "gender": "female",
+                "company": "CENTREXIN",
+                "email": "penelopecolon@centrexin.com",
+                "phone": "+1 (848) 593-2717",
+                "address": "386 Euclid Avenue, Statenville, Missouri, 4584",
+                "grade": "골드"
+            },
+            {
+                "_id": "61b05e65389b3bf9398e43a5",
+                "id": "hojin",
+                "pw": "1234",
+                "index": 7,
+                "picture": "http://placehold.it/32x32",
+                "age": 37,
+                "eyeColor": "blue",
+                "name": "Taylor Weiss",
+                "gender": "female",
+                "company": "ISOPOP",
+                "email": "taylorweiss@isopop.com",
+                "phone": "+1 (882) 423-2704",
+                "address": "806 Schweikerts Walk, Bath, Pennsylvania, 1244",
+                "grade": "관리자"
+            }
+        ]
+
+        class getUserData {
+            login(아이디, 비밀번호, 성공, 실패) {
+                const data = userdb.find(user => user.id === 아이디 && user.pw === 비밀번호);
+                if (data) {
+                    성공(아이디)
+                } else {
+                    실패(new Error('로그인 실패!!'))
+                }
+            }
+            getUserDataSet(이용자, 성공, 실패) {
+                const data = userdb.find(user => user.id === 이용자);
+                if (data) {
+                    성공({
+                        id: data.id,
+                        picture: data.picture,
+                        name: data.name,
+                        company: data.company,
+                        email: data.email,
+                        grade: data.grade
+                    });
+                } else {
+                    실패(new Error('데이터 로드 실패!!'))
+                }
+            }
+        }
+
+        const userData = new getUserData();
+        const id = 'hojin';
+        const pw = '1234';
+        userData.login(
+            id,
+            pw,
+            (userID) => {
+                userData.getUserDataSet(
+                    userID,
+                    (userBasicInfo) => {
+                        // grade에 따라 콜백을 하나 더 넣어줄 수 있다.
+                        console.log(userBasicInfo);
+                    },
+                    (실패) => {
+                        console.log(실패);
+                    }
+                )
+            },
+            (실패) => {
+                console.log(실패);
+            }
+        )
+    </script>
+</body>
+
+</html>
