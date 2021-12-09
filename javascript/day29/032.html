@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax 통신 연습</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input type="text" class="id">
+    <input type="password" class="pw">
+    <button type="button" class="dataLoadButton">로그인</button>
+    <script>
+        function success(userValid) {
+            document.write(`
+                ${userValid.name}님 환영합니다.
+                멋사코인 ${userValid.phone.slice(-4)}
+                등급 : ${userValid.grade}
+            `);
+        }
+        function fail() {
+            document.write('로그인 실패!');
+        }
+        $('.dataLoadButton').click(function () {
+            let id = $('.id').val();
+            let pw = $('.pw').val();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/HojinAn/ajaxlogintest/main/userdata.json',
+                async: true,
+                success: function (result) {
+                    result = JSON.parse(result);
+                    let user = result.find(obj => obj.id === id && obj.pw === pw);
+                    if (user) {
+                        success(user);
+                    } else {
+                        fail();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
