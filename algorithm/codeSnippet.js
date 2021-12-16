@@ -691,12 +691,336 @@ console.log(quickSort(arr));
 // miss - 5
 
 // 5. 트리와 그래프
+// 5.1 트리
+// 트리의 기본형태
+// value
+// child - left
+// child - right
+const tree = {
+    root: {
+        value: 5,
+        left: {
+            value: 3,
+            left: {
+                value: 1,
+                left: null,
+                right: null
+            }, right: {
+                value: 4,
+                left: null,
+                right: null
+            }
+        },
+        right: {
+            value: 8,
+            left: {
+                value: 6,
+                left: null,
+                right: null
+            }, right: {
+                value: 9,
+                left: null,
+                right: null
+            }
+        }
+    }
+}
+
+tree.root.value // 5
+tree.root.left.value // 3
+
+// object로 linked list와 tree를 만들 수 있는데
+// 굳이 class로 만드는 이유는?
+
+// 1. 확장성
+// 2. OOP(Object-Oriented Programming, 객체 지향 프로그래밍)의 철학에 맞기 때문에
+
+class Node {
+    constructor(data) {
+        this.data = data;
+        // this.child = []; // 이렇게 하면 이진 트리가 아닌 tree가 될 수 있다. 확장성
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class Tree {
+    constructor(data) {
+        let init = new Node(data);
+        this.root = init;
+        this.데이터수 = 0;
+    }
+
+    length() {
+        return this.데이터수;
+    }
+
+    insert(data) {
+        let 새로운노드 = new Node(data);
+        let 순회용현재노드 = this.root;
+
+        while (순회용현재노드) {
+            if (data === 순회용현재노드.data) {
+                // 중복된 값은 탈락!
+                return;
+            }
+            if (data < 순회용현재노드.data) {
+                // 들어온 데이터가 작으면 왼쪽에
+                // 비어있으면 데이터를 넣고, 비어있지 않으면 타고 또 내려가야합니다.
+                if (!순회용현재노드.left) {
+                    순회용현재노드.left = 새로운노드;
+                    return;
+                }
+                순회용현재노드 = 순회용현재노드.left;
+            }
+            if (data > 순회용현재노드.data) {
+                // 들어온 데이터가 크면 오른쪽에
+                // 비어있으면 데이터를 넣고, 비어있지 않으면 타고 또 내려가야합니다.
+                if (!순회용현재노드.right) {
+                    순회용현재노드.right = 새로운노드;
+                    return;
+                }
+                순회용현재노드 = 순회용현재노드.right;
+            }
+        }
+
+        this.데이터수 += 1;
+    }
+
+    DFS() {
+        // 깊이우선탐색, DFS(Depth Fisrt Search)
+        // Stack 이용!
+        let 결과값 = [];
+        let 스택 = [this.root];
+
+        while (스택.length !== 0) {
+            let current = 스택.pop();
+            if (current.right) {
+                스택.push(current.right);
+            }
+            if (current.left) {
+                스택.push(current.left);
+            }
+            결과값.push(current.data);
+        }
+        return 결과값;
+    }
+
+    BFS() {
+        // 너비우선탐색, BFS(Breadth First Search)
+        // Queue 이용!
+        let 결과값 = [];
+        let 큐 = [this.root];
+
+        while (큐.length !== 0) {
+            let current = 큐.shift();
+            if (current.left) {
+                큐.push(current.left);
+            }
+            if (current.right) {
+                큐.push(current.right);
+            }
+            결과값.push(current.data);
+        }
+        return 결과값;
+    }
+}
+
+// 아래처럼 넣는 순서에 따라 순서가 바뀐다 주의할 것!
+let t = new Tree(5); // root노드는 처음에!!
+t.insert(3);
+t.insert(8);
+t.insert(1);
+t.insert(4);
+t.insert(6);
+t.insert(9);
+
+
+t.root.data // 5
+t.root.left.data // 3
+t.root.right.right.data // 9
+
 // 6. 트리의 순회
 
 
 
 // 목차(실전 코딩테스트 풀이)
 // 1. 18년도
+// https://programmers.co.kr/learn/courses/30/lessons/17681?language=javascript
+// 주제 : 2진법, 이진법, 진법 연산, replace, or 연산, || 연산
+let x = 9;
+x.toString(); // '9'
+x.toString(2); // '1001' 이진법 변환 ㄷㄷ
+x.toString(8); // '11'
+let s = 15
+s.toString(16); // 'f'
+
+let x = 9;
+let y = 30;
+
+x.toString(2);
+y.toString(2);
+
+'01001'
+'11110'
+'-----'
+'11111'
+
+let z = '11111';
+z.replace(/1/g, '#').replace(/0/g, ' ');
+
+(9 | 30).toString(2).replace(/1/g, '#').replace(/0/g, ' ')
+
+///////////////////////////
+
+let n = 5;
+let arr1 = [9, 20, 28, 18, 11];
+let arr2 = [30, 1, 21, 17, 28];
+
+function solution(n, arr1, arr2) {
+    let result = [];
+    for (let i = 0; i < n; i++) {
+        result.push((arr1[i] | arr2[i]).toString(2).replace(/1/g, '#').replace(/0/g, ' '))
+    }
+    return result;
+}
+
+console.log(solution(n, arr1, arr2));
+/////////////////
+// 유틸리티 모음
+
+const zip = (a, b) => a.map((value, index) => [value, b[index]]);
+const fillZero = (n, arr) => { return '0'.repeat(n - arr.length) + arr }
+// 코테에 쓰려고 만든 zip
+
+////////////////////
+
+function solution(n, arr1, arr2) {
+    let result = [];
+    // const zip = (a, b) => a.map((value, index) => [value, b[index]]);
+    const fillSpace = (n, arr) => { return ' '.repeat(n - arr.length) + arr }
+    for (let i = 0; i < n; i++) {
+        result.push(fillSpace(n, (arr1[i] | arr2[i]).toString(2).replace(/1/g, '#').replace(/0/g, ' ')));
+    }
+    return result;
+}
+
+console.log(solution(n, arr1, arr2));
+////////
+
+
+function solution(n, arr1, arr2) {
+    let result = [];
+    const zip = (a, b) => a.map((value, index) => [value, b[index]]);
+    const fillSpace = (n, arr) => { return ' '.repeat(n - arr.length) + arr }
+    for (let [i, j] of zip(arr1, arr2)) {
+        result.push(fillSpace(n, (i | j).toString(2).replace(/1/g, '#').replace(/0/g, ' ')));
+    }
+    return result;
+}
+
+// 2. 다트게임
+// https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
+
+testcase = ['1S2D*3T', '1D2S#10S', '1D2S0T'];
+
+for (let c of testcase) {
+    console.log(solution(c));
+}
+
+// 37, 9, 3
+
+// step 1
+const dartResult = '1S2D*3T';
+let answer = [];
+let result = 0;
+let temp = 0; // 임시점수
+
+for (let i = 0; i < dartResult.length; i++) {
+    // console.log(dartResult[i]);
+    if (dartResult[i] >= 0 && dartResult[i] <= 9) {
+        temp = parseInt(dartResult[i]);
+    } else if (dartResult[i] == 'S') {
+        answer.push(temp);
+    } else if (dartResult[i] == 'D') {
+        // answer.push(Math.pow(temp, 2));
+        answer.push(temp ** 2);
+    } else if (dartResult[i] == 'T') {
+        // answer.push(Math.pow(temp, 3));
+        answer.push(temp ** 3);
+    }
+}
+
+console.log(answer);
+
+
+// step 2
+const dartResult = '10S2D*3T';
+let answer = [];
+let result = 0;
+let temp = 0; // 임시점수
+
+for (let i = 0; i < dartResult.length; i++) {
+    // console.log(dartResult[i]);
+    if (dartResult[i] >= 0 && dartResult[i] <= 9) {
+        if (dartResult[i] == 1 && dartResult[i + 1] == 0) {
+            temp = 10;
+            i++;
+        } else {
+            temp = parseInt(dartResult[i]);
+        }
+    } else if (dartResult[i] == 'S') {
+        answer.push(temp);
+    } else if (dartResult[i] == 'D') {
+        // answer.push(Math.pow(temp, 2));
+        answer.push(temp ** 2);
+    } else if (dartResult[i] == 'T') {
+        // answer.push(Math.pow(temp, 3));
+        answer.push(temp ** 3);
+    } else if (dartResult[i] == '*') {
+        answer[answer.length - 1] *= 2;
+        answer[answer.length - 2] *= 2;
+    } else if (dartResult[i] == '#') {
+        answer[answer.length - 1] *= -1;
+    }
+    for (let i = 0; i < answer.length; i++) {
+        result += answer[i];
+    }
+}
+
+console.log(answer);
+
+// 1	1S2D*3T	37	1^1 * 2 + 2^2 * 2 + 3^3
+// 2	1D2S#10S	9	1^2 + 2^1 * (-1) + 10^1
+// 3	1D2S0T	3	1^2 + 2^1 + 0^3
+
+//////////////////
+// 3. 캐시
+// https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
+
+function solution(cacheSize, cities) {
+    let time = 0;
+    let cache = [];
+    for (let i=0; i< cities.length; i++) {
+        let city = cities[i].toLowerCase();
+        let index = cache.indexOf(city);
+        if (index !== -1) {
+            // hit
+            cache.splice(index, 1);
+            cache.push(city);
+            tiem += 1;
+        } else {
+            // miss
+            time += 5;
+            cache.push(city);
+            if (cacheSize < cache.length) {
+                cache.shift();
+            }
+        }
+    }
+    return time;
+}
+
 // 2. 19년도
 // 3. 20년도
 // 4. 21년도
