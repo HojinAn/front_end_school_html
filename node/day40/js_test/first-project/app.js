@@ -19,11 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use((req, res, next) => {
-//   console.log("middleware!");
-//   next( );
-// });
-// 요청응답마다 middleware가 실행되는지 보기 위한 코드
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
