@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1>Hello Express</h1>
+    <% if(username) { %>
+    <div><%= username %>님 환영합니다</div>
+    <% } else { %>
+    <div>로그인이 필요합니다.</div>
+    <% } %>
   </body>
 </html>
