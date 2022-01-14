@@ -21,7 +21,7 @@ db.once("open", () => {
 
 mongoose.connect(
   `mongodb+srv://bomultwo:${dbConfig.pw}@first-project.aa346.mongodb.net/${dbConfig.name}?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
   // mongodb 페이지 connect할 때 compass 위에 yourapplication 연결하는 code 복붙할 것
   // password랑 dbname은 개인정보이므로 외부로 빼서 관리하자
 );
